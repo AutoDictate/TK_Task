@@ -12,7 +12,7 @@ public class SqlApplication {
 		SpringApplication.run(SqlApplication.class, args);
 	}
 	
-	@Bean
+	// To print the value that are in the properties File
     public CommandLineRunner printVal(PropsValues propsValues) {
         return args ->{
             String username = propsValues.getUsername();

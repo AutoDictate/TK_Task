@@ -7,9 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Component
-@Getter
-@Setter
-@Data
 
 public class PropsValues{
 	
