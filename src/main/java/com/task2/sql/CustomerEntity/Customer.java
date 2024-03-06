@@ -27,10 +27,14 @@ public class Customer{
 	@Column(name ="name")
 	private String customer_name;
 	
+	@Column(name ="address")
+	private String customer_address;
+	
+	@Column(name ="age")
+	private int customer_age;
 	public int getCustomer_id() {
 		return customer_id;
 	}
-	
 
 	public void setCustomer_id(int customer_id) {
 		this.customer_id = customer_id;
@@ -60,9 +64,5 @@ public class Customer{
 		this.customer_age = customer_age;
 	}
 
-	@Column(name ="address")
-	private String customer_address;
 	
-	@Column(name ="age")
-	private int customer_age;
 }
