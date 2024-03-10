@@ -81,4 +81,55 @@ select count(*) from friends where age = 22;
 
 select count(degree) from friends where age = 21;
 
+select count(distinct degree) from friends;
+
+select count(martial_status) from friends where martial_status = "single";
+
+select sum(age) from friends;
+
+select avg(age) from friends;
+
+select avg(degree) from friends; -- reusult will be 0 when taking average for varchar
+
+select f_name from friends where f_name like "m_ha";
+
+select * from friends where college in ("mec", "kec","kce");
+
+select f_name from friends where address in ("attur","salem");
+
+select f_name from friends where age between 0 and 21;
+
+-- ALIAS
+
+select upper(f_name) as Friends_Name from friends; -- upper case
+
+
+-- GETTING INTO JOINS CONCEPT
+
+create table friends_job(
+	id int not null auto_increment,
+    f_name varchar(50),
+    job_status varchar(20),
+    job_location varchar(20),
+    foreign key(id) references friends(id)
+);
+
+insert into friends_job values(1,"surya","selected","chennai");
+insert into friends_job values(2,"selva","business","africa");
+insert into friends_job values(3,"moha","pending","chennai");
+insert into friends_job values(4,"karthi","not selected","none");
+insert into friends_job values(5,"sibi","masters","coimbatore");
+insert into friends_job values(6,"vimal","government","chennai");
+insert into friends_job values(7,"sakthi","ca","coimbatore");
+insert into friends_job values(8,"chandru","selected","coimbatore");
+
+select friends.f_name,friends.age,friends_job.job_location, job_status 
+from friends_job 
+inner join friends on friends_job.id = friends.id; 
+
+select friends_job.job_location, job_status 
+from friends
+left join friends_job on friends_job.id = friends.id; 
+
+select * from friends_job;
 select * from friends;
