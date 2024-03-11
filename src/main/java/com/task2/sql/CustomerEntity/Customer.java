@@ -32,6 +32,8 @@ public class Customer{
 	
 	@Column(name ="age")
 	private int customer_age;
+	
+	
 	public int getCustomer_id() {
 		return customer_id;
 	}

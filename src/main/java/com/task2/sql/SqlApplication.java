@@ -17,11 +17,17 @@ public class SqlApplication {
 		SpringApplication.run(SqlApplication.class, args);
 	}
 	
+	//	Note:-
+	// CommandLineRunner Executes First or Before ApplicationRunner
+	
+	@Bean
 	// To print the value that are in the properties File
     public CommandLineRunner printVal(PropsValues propsValues) {
         return args ->{
             String username = propsValues.getUsername();
+            String password = propsValues.getPassword();
             System.out.println("Username: " + username);
+            System.out.println("Password: " + password);
         };
     }
     

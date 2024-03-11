@@ -11,7 +11,6 @@ import com.task2.sql.CustomerEntity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
-	
 	@Query("SELECT e FROM Customer e WHERE e.customer_address = :address")
 	List<Customer> findCustomersFromSalem(String address);
 	
