@@ -3,31 +3,30 @@
 	import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 	import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.task2.sql.CustomerEntity.Customer;
+import com.task2.sql.Repository.CustomerRepository;
 	
-	import com.task2.sql.CustomerEntity.Customer;
-	import com.task2.sql.Repository.CustomerRepository;
+@Component
+@RestController
+public class CustomerService{
 	
-	@Component
-	public class CustomerService implements CommandLineRunner{
+	@Autowired					// by using this we don't want to manually instantiate the customerRepository
+	private CustomerRepository customerRepository;
+	
+	@GetMapping("/details")
+	public String CustomerDetails(){
 		
-		@Autowired					// by using this we don't want to manually instantiate the customerRepository
-		private CustomerRepository customerRepository;
-		
-		@Override
-		public void run(String... args) throws Exception {
-			
-	        List<Customer> customers = customerRepository.findCustomersFromSalem("Salem");
-	
-	        // Print the result to the console
-	        System.out.println("Customers from Salem:");
-	        for (Customer customer : customers) {
-	            System.out.println("Customer ID: " + customer.getCustomer_id());
-	            System.out.println("Customer Name: " + customer.getCustomer_name());
-	            System.out.println("Customer Address: " + customer.getCustomer_address());
-	            System.out.println("Customer Age: " + customer.getCustomer_age());
-	            System.out.println();
-	        }
-	    }
-	}
+        List<Customer> customers = customerRepository.findCustomersFromSalem("Salem");
+        StringBuilder response = new StringBuilder();
+        for (Customer customer : customers) {
+            response.append("Customer ID: ").append(customer.getCustomer_id()).append("\n");
+            response.append("Customer Name: ").append(customer.getCustomer_name()).append("\n");
+            response.append("Customer Address: ").append(customer.getCustomer_address()).append("\n");
+            response.append("Customer Age: ").append(customer.getCustomer_age()).append("\n\n");
+        }
+        return response.toString();
+    }
+}
