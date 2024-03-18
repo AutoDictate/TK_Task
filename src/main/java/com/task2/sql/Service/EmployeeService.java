@@ -21,7 +21,7 @@ public class EmployeeService {
 	
 	@PostConstruct
 	public void Dbinitialize() {
-		Department department1 = new Department( 1,"Java Tech Stack","TK");
+		Department department1 = new Department( 101,"Java Tech Stack","Chennai");
 		departmentRepository.save(department1);
 	
 		Employee employee1 = new Employee(1,"Jayasurya","jayasurya@gmail.com",department1);
