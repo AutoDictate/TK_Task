@@ -16,8 +16,7 @@ public class SqlApplication {
 		ApplicationContext context = SpringApplication.run(SqlApplication.class, args);
 		
 		DBconfig db = context.getBean(DBconfig.class);
-		db.dbConnection();
-		
-		context.getBean(DataImportService.class);	}
+		db.dbConnection();	
+	}
     
 }
