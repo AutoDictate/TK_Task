@@ -18,7 +18,6 @@ public class SqlApplication {
 		DBconfig db = context.getBean(DBconfig.class);
 		db.dbConnection();
 		
-		context.getBean(DataImportService.class).DataImportFormExcel("C:\\Users\\NOBODY\\Desktop\\TechnoKryon\\Task 2\\sql\\src\\main\\resources\\Employee.xlsx");
-	}
+		context.getBean(DataImportService.class);	}
     
 }

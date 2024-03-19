@@ -19,12 +19,14 @@ public class EmployeeService {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	
-	@PostConstruct
-	public void Dbinitialize() {
-		Department department1 = new Department( 101,"Java Tech Stack","Chennai");
-		departmentRepository.save(department1);
+	// Normal way of PostConstruct to upload values into DB while Starting Application
 	
-		Employee employee1 = new Employee(1,"Jayasurya","jayasurya@gmail.com",department1);
-		employeeRepository.save(employee1);
-	}
+//	@PostConstruct
+//	public void Dbinitialize() {
+//		Department department1 = new Department( 101,"Java Tech Stack","Chennai");
+//		departmentRepository.save(department1);
+//	
+//		Employee employee1 = new Employee(1,"Jayasurya","jayasurya@gmail.com",department1);
+//		employeeRepository.save(employee1);
+//	}
 }

@@ -8,12 +8,15 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.task2.sql.EmployeeEntity.Department;
 import com.task2.sql.EmployeeEntity.Employee;
 import com.task2.sql.Repository.DepartmentRepository;
 import com.task2.sql.Repository.EmployeeRepository;
+
+import jakarta.annotation.PostConstruct;
 
 @Component
 public class DataImportService {
@@ -24,9 +27,13 @@ public class DataImportService {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	
-	public void DataImportFormExcel(String filepath) {
+	@Autowired
+	private Environment env;
+	
+	@PostConstruct
+	public void DataImportFormExcel() {
 		try {
-			InputStream inputStream = new FileInputStream(filepath);
+			InputStream inputStream = new FileInputStream(env.getProperty("spring.datasource.excelfilepath"));
 			Workbook workbook = WorkbookFactory.create(inputStream);
 			
 			//System.out.println(workbook.getNumberOfSheets());
