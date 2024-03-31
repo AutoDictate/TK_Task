@@ -25,4 +25,12 @@ public class EmployeeService {
 	public Employee getEmployeeById(Integer id) {
 		return employeeRepository.findById(id).get();
 	}
+	
+	public Employee update(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+	
+	public void delete(Integer id) {
+		employeeRepository.deleteById(id);
+	}
 }
