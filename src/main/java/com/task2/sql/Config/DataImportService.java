@@ -1,4 +1,4 @@
-package com.task2.sql.Service;
+package com.task2.sql.Config;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -11,12 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.task2.sql.EmployeeEntity.Department;
-import com.task2.sql.EmployeeEntity.Employee;
+import com.task2.sql.Entity.Department;
+import com.task2.sql.Entity.Employee;
 import com.task2.sql.Repository.DepartmentRepository;
 import com.task2.sql.Repository.EmployeeRepository;
 
-import jakarta.annotation.PostConstruct;
 
 @Component
 public class DataImportService {
@@ -30,8 +29,8 @@ public class DataImportService {
 	@Autowired
 	private Environment env;
 	
-	@PostConstruct
-	public void DataImportFormExcel() {
+	
+	public void DataImportFromExcel() {
 		try {
 			InputStream inputStream = new FileInputStream(env.getProperty("spring.datasource.excelfilepath"));
 			Workbook workbook = WorkbookFactory.create(inputStream);

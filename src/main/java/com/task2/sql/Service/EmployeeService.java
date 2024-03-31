@@ -1,32 +1,28 @@
 package com.task2.sql.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.util.List;
 
-import com.task2.sql.Repository.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.task2.sql.Entity.Employee;
 import com.task2.sql.Repository.EmployeeRepository;
 
-import com.task2.sql.EmployeeEntity.Department;
-import com.task2.sql.EmployeeEntity.Employee;
-import jakarta.annotation.PostConstruct;
-
-@Component
+@Service
 public class EmployeeService {
 	
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	EmployeeRepository employeeRepository;
 	
-	@Autowired
-	private DepartmentRepository departmentRepository;
-	
-	// Normal way of PostConstruct to upload values into DB while Starting Application
-	
-//	@PostConstruct
-//	public void Dbinitialize() {
-//		Department department1 = new Department( 101,"Java Tech Stack","Chennai");
-//		departmentRepository.save(department1);
-//	
-//		Employee employee1 = new Employee(1,"Jayasurya","jayasurya@gmail.com",department1);
-//		employeeRepository.save(employee1);
-//	}
+	public Employee create(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+
+	public List<Employee> getAllEmployee() {
+		return employeeRepository.findAll();
+	}
+
+	public Employee getEmployeeById(Integer id) {
+		return employeeRepository.findById(id).get();
+	}
 }

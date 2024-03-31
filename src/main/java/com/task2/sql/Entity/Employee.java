@@ -1,4 +1,4 @@
-package com.task2.sql.EmployeeEntity;
+package com.task2.sql.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
