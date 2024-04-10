@@ -2,35 +2,14 @@ package com.task2.sql.Service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.task2.sql.DTO.EmployeeDTO;
+import com.task2.sql.Entity.EmployeeEntity;
 
-import com.task2.sql.Entity.Employee;
-import com.task2.sql.Repository.EmployeeRepository;
 
-@Service
-public class EmployeeService {
-	
-	@Autowired
-	EmployeeRepository employeeRepository;
-	
-	public Employee create(Employee employee) {
-		return employeeRepository.save(employee);
-	}
-
-	public List<Employee> getAllEmployee() {
-		return employeeRepository.findAll();
-	}
-
-	public Employee getEmployeeById(Integer id) {
-		return employeeRepository.findById(id).get();
-	}
-	
-	public Employee update(Employee employee) {
-		return employeeRepository.save(employee);
-	}
-	
-	public void delete(Integer id) {
-		employeeRepository.deleteById(id);
-	}
+public interface EmployeeService {
+	public EmployeeEntity create(EmployeeEntity employeeEntity);
+	public List<EmployeeDTO> getAllEmployee();
+	public EmployeeDTO getEmployeeById(Integer id);
+	public EmployeeDTO update(EmployeeDTO employee);
+	public void delete(Integer id);
 }
