@@ -1,0 +1,9 @@
+{
+        "employeeId": 4,
+        "name": "chandru",
+        "email": "chandru009@gmail.com",
+        "age": 22,
+        "phone": 89076,
+        "createdBy": "Admin",
+        "modifiedBy": "Admin"
+    }
